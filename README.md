@@ -1,2 +1,0 @@
-# Medol-LessonAndroid
-Android
