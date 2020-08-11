@@ -1,4 +1,4 @@
-package com.example.multitouchapplication;
+package com.example.gestureeventapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(new MultiTouchView(this));
+        setContentView(new MyImageView(this));
     }
 }
