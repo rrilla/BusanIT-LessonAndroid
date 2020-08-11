@@ -1,4 +1,4 @@
-package com.example.ex1;
+package com.example.mydatetimepickerapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
