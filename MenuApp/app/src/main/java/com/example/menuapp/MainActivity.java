@@ -35,15 +35,34 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
-        if(v==button){
+        if (v == button) {
             menu.setHeaderTitle("배경색");
             inflater.inflate(R.menu.menu3, menu);
         }
-        if(v==linearLayout){
+        if (v == linearLayout) {
             menu.setHeaderTitle("버튼설정");
             inflater.inflate(R.menu.menu2, menu);
         }
     }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        super.onContextItemSelected(item);
+        switch (item.getItemId()) {
+
+            case R.id.itemContextRed:
+                linearLayout.setBackgroundColor(Color.RED);
+                break;
+            case R.id.itemContextGreen:
+                linearLayout.setBackgroundColor(Color.GREEN);
+                break;
+            case R.id.itemContextBlue:
+                linearLayout.setBackgroundColor(Color.BLUE);
+                break;
+        }
+        return true;
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         /*menu.add(0, 1, 0, "배경색(빨강)"); //java코드만을 이용한 메뉴
         menu.add(0, 2, 0, "배경색(초록)");
         menu.add(0, 3, 0, "배경색(파랑)");*/
+
         return true;
     }
 

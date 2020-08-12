@@ -9,14 +9,17 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView img1, img2, img3;
-    TextView tv;
+    EditText et;
     int rotate;
+    LinearLayout layout;
 
 
     @Override
@@ -26,8 +29,9 @@ public class MainActivity extends AppCompatActivity {
         img1 = findViewById(R.id.imageView1);
         img2 = findViewById(R.id.imageView2);
         img3 = findViewById(R.id.imageView3);
-        tv = findViewById(R.id.textView);
-        //rotate = Integer.parseInt(tv.getText().toString());
+        et = findViewById(R.id.EditText);
+        layout = findViewById(R.id.layout);
+        //rotate = Integer.parseInt(et.getText().toString());
     }
 
     @Override
@@ -41,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            /*case R.id.itemRotate:
-                rotate += 30;
-                if(rotate >=360) rotate = 0;
-                img1.setRotation(rotate);
-                break;*/
+            case R.id.itemRotate:
+                rotate = Integer.parseInt(et.getText().toString());
+                if(rotate >=360) rotate = rotate%360;
+                layout.setRotation(rotate);
+                break;
             case R.id.item1:
                 img1.setVisibility(View.VISIBLE);
                 img2.setVisibility(View.GONE);
