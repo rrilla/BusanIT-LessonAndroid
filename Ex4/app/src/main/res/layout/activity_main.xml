@@ -4,41 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity" >
 
     <RadioGroup
         android:id="@+id/rg"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <RadioButton
-            android:id="@+id/radioButton1"
+            android:id="@+id/rbDog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="강아지" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/rbCat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="고양이" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/rbRabbit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="토끼" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/rbHorse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="말" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="보기" />
     </RadioGroup>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 </LinearLayout>
