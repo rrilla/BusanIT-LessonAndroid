@@ -18,6 +18,9 @@
             <item
                 android:id="@+id/subSize"
                 android:title="버튼 2배 확대"/>
+            <item
+                android:id="@+id/minSize"
+                android:title="버튼 2배 축소"/>
         </menu>
     </item>
 
