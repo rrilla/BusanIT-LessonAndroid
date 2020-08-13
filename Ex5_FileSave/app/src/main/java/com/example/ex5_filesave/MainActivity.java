@@ -2,7 +2,9 @@ package com.example.ex5_filesave;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -33,12 +35,19 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
+        ActivityCompat.requestPermissions(this,
+                new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, MODE_PRIVATE);
+        //↑사용자가 거부,허용 선택 가능한 대화상자 띄움(보안)
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-
-                }catch()
+                    FileInputStream is = new FileInputStream("/sdcard/myDir/test01.txt");
+                    byte[] txt = new byte[is.available()];
+                    is.read(txt);
+                    ed.setText(new String(txt));
+                    is.close();
+                }catch(IOException e){}
             }
         });
 
