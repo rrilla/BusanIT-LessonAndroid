@@ -5,19 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity" >
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="버튼을 눌러 부분화면을 추가하셈" />
+        android:text="아래 버튼을 눌러 부분화면을 추가해주세요" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="버튼" />
+        android:text="Button" />
 
     <LinearLayout
         android:id="@+id/container"

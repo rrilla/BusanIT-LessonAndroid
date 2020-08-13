@@ -1,4 +1,4 @@
-package com.example.activitytestapp;
+package com.example.c10_ex2;
 
 import org.junit.Test;
 
