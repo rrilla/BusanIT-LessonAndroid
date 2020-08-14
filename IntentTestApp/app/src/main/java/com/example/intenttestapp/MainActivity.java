@@ -27,11 +27,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = edName.getText().toString();
                 int age = Integer.parseInt(edAge.getText().toString());
-                Intent intent = new Intent(MainActivity.this, InputActivity.class);
-                intent.putExtra("name", name);
+                Intent intent = new Intent(MainActivity.this, OutputActivity.class);
+                /*intent.putExtra("name", name);
                 intent.putExtra("age", age);
-                intent.putExtra("hobby", hobby);
+                intent.putExtra("hobby", hobby);*/
+                Member member = new Member(name, age, hobby);
+                intent.putExtra("member", member);
                 startActivity(intent);
+                //startActivityForResult();
             }
         });
     }

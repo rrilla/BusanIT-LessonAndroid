@@ -18,13 +18,15 @@ public class OutputActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_output);
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
+        Member member = (Member)intent.getSerializableExtra("member");
+        /*String name = intent.getStringExtra("name");
         int age = intent.getIntExtra("age", 0);
-        String[] hobby = intent.getStringArrayExtra("hobby");
+        String[] hobby = intent.getStringArrayExtra("hobby");*/
         tv = findViewById(R.id.tvResult);
         btnFinish = findViewById(R.id.btnFinish);
-        String str = "이름 : " + name;
-        str += "\n나이 : "+ age + "\n취미 : ";
+        String str = "이름 : " + member.getName();
+        str += "\n나이 : "+ member.getAge() + "\n취미 : ";
+        String[] hobby = member.getHobby();
         for(int i=0; i<hobby.length; i++){
             str += hobby[i] + "";
         }
