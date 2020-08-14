@@ -1,0 +1,9 @@
+- xml파일에서 버튼에 추가
+android:onClick="메소드이름"
+
+- java파일에서 메소드 추가 
+public void "메소드이름"(View view){
+	switch(view.getId()){
+		case R.id."버튼id" : 
+	}
+}
