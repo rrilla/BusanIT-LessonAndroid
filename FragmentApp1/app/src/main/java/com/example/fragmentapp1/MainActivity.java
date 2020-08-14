@@ -1,6 +1,7 @@
 package com.example.fragmentapp1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -30,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectFragment(View v){
-
+        Fragment fragment = null;
+        switch (v.getId()){
+            case R.id.buttonA: fragment = new AFragment();break;
+            case R.id.buttonB: fragment = new BFragment();break;
+        }
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.container, fragment);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 }
