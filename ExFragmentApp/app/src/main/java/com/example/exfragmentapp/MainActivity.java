@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity implements NameFragment.OnNa
             NameFragment fragment = new NameFragment();
             fragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction().add(R.id.name_container, fragment).commit();
-
         }
     }
 
