@@ -19,21 +19,21 @@
         android:text="영화 상세보기" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textName"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="제목" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textActor"
         android:layout_weight="2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="출연배우" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textContent"
         android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
