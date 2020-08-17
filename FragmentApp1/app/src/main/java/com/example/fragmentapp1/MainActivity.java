@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             ft.add(R.id.container, fragment);
             ft.commit();
            //getSupportFragmentManager().beginTransaction().add(R.id.container, fragment).commit();
+            //메소드 체인
         }
     }
 
