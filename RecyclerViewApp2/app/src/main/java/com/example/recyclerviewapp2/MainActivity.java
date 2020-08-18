@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -33,7 +35,14 @@ public class MainActivity extends AppCompatActivity {
             adapter.addItem(new Movie(resId[i],title[i],genre[i],director[i]));
         }
         recyclerView.setAdapter(adapter);
-
+        adapter.setOnItemClickListener(new OnMovieItemClickListener() {
+            @Override
+            public void onItemClick(MovieAdapter.ViewHolder holder, View view, int position) {
+                Movie item=adapter.getItem(position);
+                Toast.makeText(getApplicationContext(),
+                        "영화제목:"+item.getTitle(),Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 }

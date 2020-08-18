@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>
-implements OnMovieItemClickListener{
+        implements OnMovieItemClickListener{
     ArrayList<Movie> movieItems=new ArrayList<Movie>();
+
     OnMovieItemClickListener listener;
 
     @NonNull
@@ -22,7 +23,7 @@ implements OnMovieItemClickListener{
         LayoutInflater inflater=LayoutInflater.from(parent.getContext());
         View itemView=inflater.inflate(R.layout.movie_item,parent,false);
 
-        return new ViewHolder(itemView);
+        return new ViewHolder(itemView,this);
     }
 
     @Override
@@ -52,13 +53,13 @@ implements OnMovieItemClickListener{
     }
 
     public void setOnItemClickListener(OnMovieItemClickListener listener){
-        this.listener = listener;
+        this.listener=listener;
     }
 
     @Override
     public void onItemClick(ViewHolder holder, View view, int position) {
-        if(listener != null){
-            listener.onItemClick(holder, view, position);
+        if(listener !=null){
+            listener.onItemClick(holder,view,position);
         }
     }
 
@@ -68,7 +69,7 @@ implements OnMovieItemClickListener{
         TextView tvGenre;
         TextView tvDirector;
 
-        public ViewHolder(@NonNull View itemView, final OnMovieItemClickListener listener) {
+        public ViewHolder(@NonNull View itemView,final OnMovieItemClickListener listener) {
             super(itemView);
             iv=itemView.findViewById(R.id.imageView);
             tvTitle=itemView.findViewById(R.id.tvTitle);
@@ -78,9 +79,9 @@ implements OnMovieItemClickListener{
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if(listener != null){
-                        listener.onItemClick(ViewHolder.this, view, position);
+                    int position=getAdapterPosition();
+                    if(listener!=null){
+                        listener.onItemClick(ViewHolder.this,view,position);
                     }
                 }
             });
