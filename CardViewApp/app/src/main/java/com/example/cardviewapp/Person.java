@@ -4,6 +4,11 @@ public class Person {
     String name;
     String mobile;
 
+    public Person(String name, String mobile) {
+        this.name = name;
+        this.mobile = mobile;
+    }
+
     public String getName() {
         return name;
     }
