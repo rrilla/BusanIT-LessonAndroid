@@ -8,10 +8,14 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class SmsReceiver extends BroadcastReceiver {
     public static final String TAG = "SmsReceiver";
+
+    public SimpleDateFormat format =
+            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -27,6 +31,8 @@ public class SmsReceiver extends BroadcastReceiver {
             Log.i(TAG, "SMS contents : "+contents);
             Date receiverDate = new Date(messages[0].getTimestampMillis());
             Log.i(TAG, "SMS received date : "+receiverDate.toString());
+
+            sendToActivity(context, sender, contents, receiverDate);
         }
     }
 
@@ -35,7 +41,7 @@ public class SmsReceiver extends BroadcastReceiver {
         SmsMessage[] messages = new SmsMessage[objs.length];
         int smsCount = objs.length;
         for(int i=0; i<smsCount; i++){
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){ //API23 버전값 비교
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){ //API23 이상이면 (버전값 비교)
                 String format = bundle.getString("format");
                 messages[i] = SmsMessage.createFromPdu((byte[])objs[i], format);
             }else{
@@ -43,5 +49,15 @@ public class SmsReceiver extends BroadcastReceiver {
             }
         }
         return messages;
+    }
+
+    private void sendToActivity(Context context, String sender, String contents, Date receivedDate){
+        Intent myIntent = new Intent(context, SmsActivity.class);
+        myIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP |
+                Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        myIntent.putExtra("sender", sender);
+        myIntent.putExtra("contents", contents);
+        myIntent.putExtra("receivedDate", format.format(receivedDate));
+        context.startActivity(myIntent);
     }
 }
