@@ -10,10 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
     EditText et;
     Button btn;
+    ProgressBar progressBar;
     //MainHandler handler;
     int value=0;
     Handler handler = new Handler();
@@ -22,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        et=findViewById(R.id.edit1);
-        btn=findViewById(R.id.btn1);
+        et = findViewById(R.id.edit1);
+        btn = findViewById(R.id.btn1);
+        progressBar = findViewById(R.id.progressBar);
         //handler=new MainHandler();
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }*/
+
 
 
 }
