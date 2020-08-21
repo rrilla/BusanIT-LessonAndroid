@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:layout_margin="8dp"
+        app:cardBackgroundColor="#FFFFFFFF"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -18,26 +23,36 @@
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:padding="5dp"
                 app:srcCompat="@drawable/movie" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textSize="20sp"
+                    android:maxLines="1"
+                    android:paddingLeft="10dp"
+                    android:text="제목" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/tvCnt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:textColor="#FF0000FF"
+                    android:maxLines="1"
+                    android:textSize="16sp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="right"
+                    android:text="관객수" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
