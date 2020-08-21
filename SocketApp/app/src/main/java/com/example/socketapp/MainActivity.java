@@ -11,7 +11,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.ServerSocket;
+import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,16 +43,40 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         startServer();
                     }
-                });
+                }).start();
             }
         });
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                final String data = editText.getText().toString();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        send(data);
+                    }
+                }).start();
             }
         });
+    }
+
+    private void send(String data) {
+        try{
+            int portNum = 5001;
+            Socket socket = new Socket("localhost",portNum);
+            printClientLog("소켓 연결 함");
+            ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
+            os.writeObject(data);
+            os.flush();
+            printClientLog("데이터 전송 함");
+
+            ObjectInputStream is = new ObjectInputStream(socket.getInputStream());
+            printClientLog("서버로부터 받음 : " + is.readObject());
+            socket.close();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     private void startServer() {
@@ -56,9 +84,35 @@ public class MainActivity extends AppCompatActivity {
             int portNum = 5001;
             ServerSocket serverSocket = new ServerSocket(portNum);
             printServerLog("서버시작함 : " + portNum);
-        } catch (IOException e) {
+            while(true){
+                Socket socket = serverSocket.accept();
+                InetAddress clientHost = socket.getLocalAddress();
+                int clientPort = socket.getPort();
+                printServerLog("클라이언트 연결됨 : " + clientHost + " : " + clientPort);
+                ObjectInputStream is = new ObjectInputStream(socket.getInputStream());
+                Object obj = is.readObject();
+                printServerLog("데이터 받음 : " + obj);
+
+                ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
+                os.writeObject(obj+" from server.");
+                os.flush();
+                printServerLog("데이터 보냄");
+                socket.close();
+
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void printClientLog(final String data) {
+        Log.d("MainActivity", data);
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                tvClient.append(data + "\n");
+            }
+        });
     }
 
     private void printServerLog(final String data) {
