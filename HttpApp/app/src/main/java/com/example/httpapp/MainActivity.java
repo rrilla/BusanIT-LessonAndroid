@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         ed = findViewById(R.id.edit1);
         tv = findViewById(R.id.textView);
         btn = findViewById(R.id.button);
+        ed.setText("https://movie.naver.com/");
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,5 +72,15 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception ex){
             ex.printStackTrace();
         }
+        printTv("응답 ->\n" + output);
+    }
+
+    private void printTv(final String data) {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                tv.setText(data);
+            }
+        });
     }
 }
