@@ -2,6 +2,6 @@ package com.example.jsonapp;
 
 import android.view.View;
 
-public class OnMovieItemClickListener {
-    public void onItemClick(MovieList.ViewHoler holer, View view int position);
+public interface OnMovieItemClickListener {
+    public void onItemClick(MovieAdapter.ViewHolder holder, View view, int position);
 }
