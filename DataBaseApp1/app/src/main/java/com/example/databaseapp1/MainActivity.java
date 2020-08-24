@@ -15,7 +15,7 @@ import static java.sql.DriverManager.println;
 public class MainActivity extends AppCompatActivity {
 
     EditText edDB, edTable;
-    Button btnDB, btnTable, btnInsert, btnSelect;
+    Button btnDB, btnTable, btnInsert, btnSelect, btnDelete, btnUpdate;
     TextView tv;
     SQLiteDatabase database;
     String tableName;
@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         btnTable = findViewById(R.id.btnTable);
         btnInsert = findViewById(R.id.btnInsert);
         btnSelect = findViewById(R.id.btnSearch);
+        btnDelete = findViewById(R.id.btnDelete);
+        btnUpdate = findViewById(R.id.btnUpdate);
 
         btnDB.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +60,18 @@ public class MainActivity extends AppCompatActivity {
                 selectData();
             }
         });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteData();
+            }
+        });
+    }
+
+    private void deleteData() {
+        println("deleteData() 호출");
+        String sql = "delete from " + tableName +"where ";
+
     }
 
     private void selectData() {
